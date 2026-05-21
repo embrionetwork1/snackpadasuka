@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Snack Pada Suka – Paket Snack & Catering Acara</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Nunito:wght@400;500;600;700;800;900&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --dg:#0d3d20;--mg:#1a6b3c;--lg:#2d8a5e;--fg:#3da06e;
+  --sg:#4a7a5a;--lsg:#6b9e7a;--xg:#c2dcc8;
+  --cream:#f2f9f4;--wcream:#e8f4eb;
+  --red:#c62828;--redl:#e53935;--reddk:#8b1a1a;
+  --wh:#fff;
+  --shadow:0 8px 32px rgba(13,61,32,.18);
+  --shadow2:0 2px 12px rgba(13,61,32,.10);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Nunito',sans-serif;color:#fff;overflow-x:hidden;
+  background:url('daunpisang-bg.jpg') center/cover fixed;
+}
+body::before{content:'';position:fixed;inset:0;background:rgba(8,28,15,.62);pointer-events:none;z-index:0;}
+.page-layer{position:relative;z-index:1;}
+
+/* ── HERO CAROUSEL ── */
+#hero{position:relative;overflow:hidden;}
+.hero-carousel{position:relative;width:100%;}
+.hero-track{display:flex;transition:transform .55s cubic-bezier(.25,.8,.25,1);}
+.hero-slide{min-width:100%;position:relative;}
+.hero-slide img{width:100%;display:block;max-height:90vh;object-fit:cover;}
+.hero-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:20;
+  width:46px;height:46px;border-radius:50%;
+  background:rgba(255,255,255,.25);backdrop-filter:blur(6px);
+  border:2px solid rgba(255,255,255,.5);color:#fff;font-size:20px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;transition:all .2s;}
+.hero-arrow:hover{background:rgba(255,255,255,.5);}
+.hero-arrow.prev{left:14px;}
+.hero-arrow.next{right:14px;}
+.hero-dots{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);
+  display:flex;gap:8px;z-index:20;}
+.hero-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.5);
+  cursor:pointer;transition:all .2s;border:none;}
+.hero-dot.active{background:#fff;width:26px;border-radius:5px;}
+
+/* ── INFO STRIP ── */
+.info-strip{background:linear-gradient(135deg,rgba(13,61,32,.95),rgba(26,107,60,.97));
+  backdrop-filter:blur(8px);padding:18px 16px;text-align:center;border-bottom:2px solid var(--lg);}
+.info-strip-inner{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:18px 30px;max-width:800px;margin:0 auto 16px;}
+.info-chip{display:flex;align-items:center;gap:8px;color:#fff;font-size:14px;font-weight:700;}
+.info-chip .ic{font-size:20px;}
+.main-cta{display:inline-flex;align-items:center;gap:10px;
+  background:linear-gradient(135deg,#c62828,#8b1a1a);color:#fff;font-size:16px;
+  font-weight:800;padding:14px 34px;border-radius:50px;text-decoration:none;
+  box-shadow:0 6px 22px rgba(198,40,40,.45);transition:transform .2s,box-shadow .2s;}
+.main-cta:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(198,40,40,.55);}
+.main-cta svg{flex-shrink:0;}
+
+/* ── SNACK KILAT BANNER ── */
+.kilat-banner{background:linear-gradient(135deg,#e65c00,#f9d423);padding:14px 20px;text-align:center;}
+.kilat-banner a{color:#fff;text-decoration:none;font-size:16px;font-weight:900;display:inline-flex;align-items:center;gap:10px;letter-spacing:.3px;}
+.kilat-banner a:hover{text-decoration:underline;}
+
+/* ── SECTION WRAPPERS ── */
+.section{padding:52px 16px;position:relative;}
+.section-light{background:rgba(255,255,255,.96);}
+.section-alt{background:rgba(236,246,239,.97);}
+.section-dark{background:rgba(10,43,22,.97);padding:52px 16px;}
+.container{max-width:1100px;margin:0 auto;}
+.section-title{text-align:center;margin-bottom:36px;}
+.section-title h2{font-family:'Playfair Display',serif;font-size:clamp(22px,5vw,36px);color:var(--dg);font-weight:900;}
+.section-title.light h2{color:#fff;}
+.section-title p{color:#5a7060;font-size:14px;margin-top:6px;}
+.section-title.light p{color:rgba(255,255,255,.75);}
+.underline{width:60px;height:4px;background:linear-gradient(90deg,var(--lg),#ffffff);border-radius:2px;margin:10px auto 0;}
+
+/* ── CARDS GRID ── */
+.paket-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px;}
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;}
+
+/* ── PRODUCT CARD ── */
+.prod-card{background:#fff;border-radius:22px;overflow:hidden;box-shadow:var(--shadow);transition:transform .25s,box-shadow .25s;}
+.prod-card:hover{transform:translateY(-5px);box-shadow:0 18px 50px rgba(26,74,46,.22);}
+.card-header{padding:18px 20px 12px;}
+.card-header.green{background:linear-gradient(135deg,var(--dg),var(--mg));}
+.card-header.brown{background:linear-gradient(135deg,#0d3d20,#1a6b3c);}
+.card-header.red{background:linear-gradient(135deg,#1a6b3c,#2d8a5e);}
+.card-header.var(--mg){background:linear-gradient(135deg,#1a6b3c,#2d8a5e);}
+.card-header.teal{background:linear-gradient(135deg,#1a6b3c,#2d8a5e);}
+.card-header.indigo{background:linear-gradient(135deg,#0d3d20,#1a6b3c);}
+.card-header.purple{background:linear-gradient(135deg,#1a6b3c,#2d8a5e);}
+.price-tag{display:inline-flex;align-items:center;gap:4px;background:var(--mg);color:#fff;
+  font-size:19px;font-weight:900;padding:5px 14px;border-radius:24px;
+  box-shadow:0 3px 10px rgba(201,168,76,.45);}
+.price-tag small{font-size:12px;font-weight:600;}
+.card-name{color:#fff;font-family:'Playfair Display',serif;font-size:17px;font-weight:700;margin-top:7px;}
+.card-body{padding:18px 20px 20px;}
+
+/* ── IMG SLIDER ── */
+.img-slider{position:relative;border-radius:14px;overflow:hidden;margin-bottom:14px;aspect-ratio:4/3;background:var(--wcream);}
+.img-slider img{width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;opacity:0;transition:opacity .4s;}
+.img-slider img.active{opacity:1;}
+.slider-prev,.slider-next{position:absolute;top:50%;transform:translateY(-50%);
+  background:rgba(0,0,0,.4);color:#fff;border:none;cursor:pointer;border-radius:50%;
+  width:30px;height:30px;font-size:14px;display:flex;align-items:center;justify-content:center;z-index:5;}
+.slider-prev{left:6px;}
+.slider-next{right:6px;}
+.slider-count{position:absolute;bottom:6px;right:8px;background:rgba(0,0,0,.5);
+  color:#fff;font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;}
+
+/* ── PRODUCT DETAILS ── */
+.prod-detail{background:#e8f4eb;border-radius:12px;padding:12px 14px;margin-bottom:12px;}
+.prod-detail ul{list-style:none;display:flex;flex-direction:column;gap:4px;}
+.prod-detail ul li{font-size:13px;color:#3a5040;display:flex;align-items:flex-start;gap:7px;line-height:1.5;}
+.prod-detail ul li::before{content:'✓';color:var(--lg);font-weight:800;flex-shrink:0;margin-top:1px;}
+.kemasan-tag{background:rgba(45,138,94,.12);color:var(--mg);font-size:12px;font-weight:700;
+  padding:4px 12px;border-radius:18px;display:inline-flex;align-items:center;gap:5px;margin-top:8px;}
+
+/* ── VARIANT SELECT / DROPDOWN ── */
+.var-select{width:100%;padding:9px 14px;border:2px solid var(--xg);border-radius:11px;
+  font-family:'Nunito',sans-serif;font-size:14px;font-weight:700;color:var(--dg);
+  background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M0 0l6 8 6-8z' fill='%232d6a4f'/%3E%3C/svg%3E") no-repeat right 12px center;
+  -webkit-appearance:none;cursor:pointer;margin-bottom:12px;}
+
+/* ── FLAVOR TAGS ── */
+.flavor-grid{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px;}
+.flavor-tag{padding:4px 12px;border-radius:20px;border:2px solid var(--xg);font-size:12px;font-weight:700;
+  cursor:pointer;color:var(--mg);background:#fff;transition:all .15s;}
+.flavor-tag.active{background:var(--mg);color:#fff;border-color:var(--mg);}
+
+/* ── TYPE TOGGLE ── */
+.type-toggle{display:flex;gap:0;border-radius:12px;overflow:hidden;border:2px solid var(--xg);margin-bottom:12px;}
+.type-btn{flex:1;padding:8px 6px;border:none;background:#fff;font-family:'Nunito',sans-serif;
+  font-size:13px;font-weight:700;cursor:pointer;color:var(--mg);transition:all .15s;text-align:center;}
+.type-btn.active{background:var(--mg);color:#fff;}
+
+/* ── QTY + ORDER ── */
+.qty-row{display:flex;align-items:center;gap:10px;margin:12px 0 6px;}
+.qty-btn{width:36px;height:36px;border-radius:50%;border:2px solid var(--lg);background:#fff;
+  color:var(--dg);font-size:18px;font-weight:800;cursor:pointer;transition:all .15s;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.qty-btn:hover:not(:disabled){background:var(--mg);color:#fff;}
+.qty-btn:disabled{opacity:.3;cursor:not-allowed;border-color:#ccc;color:#ccc;}
+.qty-input{width:66px;text-align:center;border:2px solid var(--xg);border-radius:10px;
+  padding:7px 4px;font-size:15px;font-weight:800;color:var(--dg);font-family:'Nunito',sans-serif;}
+.min-note{font-size:11px;color:#2d8a5e;font-weight:700;margin-bottom:6px;}
+.total-row{font-size:16px;font-weight:900;color:var(--dg);margin-bottom:12px;}
+.total-row span{color:var(--lg);font-size:18px;}
+.order-btn{width:100%;padding:13px;border-radius:13px;border:none;
+  background:linear-gradient(135deg,#c62828,#8b1a1a);color:#fff;font-size:14px;
+  font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  gap:8px;box-shadow:0 4px 14px rgba(198,40,40,.35);transition:all .2s;}
+.order-btn:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 7px 20px rgba(198,40,40,.45);}
+.order-btn:disabled{background:#c0c0c0;box-shadow:none;cursor:not-allowed;color:#888;}
+
+/* ── KONSULTASI CTA ── */
+.cta-strip{background:rgba(13,61,32,.95);padding:40px 16px;text-align:center;}
+.cta-strip h3{font-family:'Playfair Display',serif;color:#fff;font-size:clamp(20px,4vw,30px);margin-bottom:12px;}
+.cta-strip p{color:rgba(255,255,255,.8);font-size:14px;margin-bottom:24px;}
+
+/* ── TESTIMONI GRID ── */
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;}
+.testi-item{padding:20px 16px;background:rgba(255,255,255,.75);border-radius:18px;}
+.testi-avatar-row{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
+.testi-ava{width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;}
+.testi-meta .name{font-weight:800;color:var(--dg);font-size:14px;}
+.testi-meta .loc{font-size:11px;color:#8aaa96;}
+.testi-stars{color:var(--lg);font-size:13px;margin-bottom:6px;}
+.testi-text{font-size:13px;color:#4a6052;line-height:1.8;font-style:italic;}
+
+/* ── CLIENT LOGOS CAROUSEL ── */
+.logo-carousel-wrap{overflow:hidden;position:relative;}
+.logo-carousel-wrap::before,.logo-carousel-wrap::after{content:'';position:absolute;top:0;bottom:0;width:60px;z-index:2;}
+.logo-carousel-wrap::before{left:0;background:linear-gradient(90deg,rgba(254,248,237,1),transparent);}
+.logo-carousel-wrap::after{right:0;background:linear-gradient(-90deg,rgba(254,248,237,1),transparent);}
+.logo-track{display:flex;gap:16px;animation:logoScroll 30s linear infinite;width:max-content;}
+.logo-track:hover{animation-play-state:paused;}
+@keyframes logoScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.logo-pill{height:60px;min-width:110px;border-radius:12px;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0;
+  padding:6px 12px;text-align:center;line-height:1.2;}
+
+/* ── KENAPA KAMI ── */
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;}
+.why-card{background:rgba(255,255,255,.08);border:1px solid rgba(194,220,200,.2);
+  border-radius:18px;padding:24px 16px;text-align:center;backdrop-filter:blur(4px);}
+.why-card .ic{font-size:38px;margin-bottom:12px;}
+.why-card h4{color:#fff;font-size:15px;font-weight:800;margin-bottom:6px;}
+.why-card p{color:rgba(255,255,255,.75);font-size:12.5px;line-height:1.6;}
+
+/* ── FAQ ── */
+.faq-list{display:flex;flex-direction:column;gap:10px;max-width:800px;margin:0 auto;}
+.faq-item{background:#fff;border-radius:14px;overflow:hidden;box-shadow:var(--shadow2);}
+.faq-q{padding:16px 20px;font-weight:800;color:var(--dg);cursor:pointer;
+  display:flex;justify-content:space-between;align-items:center;font-size:14px;}
+.faq-q .arrow{transition:transform .3s;font-size:18px;color:var(--mg);}
+.faq-q.open .arrow{transform:rotate(180deg);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .3s ease;}
+.faq-a.open{max-height:200px;}
+.faq-a-inner{padding:0 20px 16px;font-size:13.5px;color:#5a7060;line-height:1.8;}
+
+/* ── GALERI ── */
+.galeri-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:900px;margin:0 auto;}
+.g-cell{border-radius:14px;overflow:hidden;aspect-ratio:1;position:relative;cursor:pointer;}
+.g-cell img{width:100%;height:100%;object-fit:cover;transition:transform .35s;}
+.g-cell:hover img{transform:scale(1.08);}
+.g-cell .g-overlay{position:absolute;inset:0;background:linear-gradient(0deg,rgba(13,61,32,.75),transparent);
+  opacity:0;transition:opacity .25s;display:flex;align-items:flex-end;padding:10px;}
+.g-cell:hover .g-overlay{opacity:1;}
+.g-cell .g-overlay span{color:#fff;font-size:12px;font-weight:700;}
+.g-cell.wide{grid-column:span 2;}
+.g-cell.tall{grid-row:span 2;}
+/* emoji placeholder galeri */
+.g-cell.placeholder{display:flex;align-items:center;justify-content:center;font-size:52px;}
+
+/* ── LOKASI ── */
+.lokasi-wrap{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:900px;margin:0 auto;align-items:start;}
+@media(max-width:650px){.lokasi-wrap{grid-template-columns:1fr;}}
+.map-frame{border-radius:18px;overflow:hidden;box-shadow:var(--shadow);height:260px;}
+.map-frame iframe{width:100%;height:100%;border:none;}
+.lokasi-info h3{font-family:'Playfair Display',serif;font-size:20px;color:var(--dg);margin-bottom:12px;}
+.lokasi-info .addr-box{background:#fff;border-radius:12px;padding:14px 16px;border:2px solid var(--xg);
+  margin-bottom:16px;font-size:13.5px;color:var(--dg);font-weight:600;line-height:1.8;}
+.btn-maps{display:inline-flex;align-items:center;gap:8px;background:var(--mg);color:#fff;
+  padding:10px 20px;border-radius:11px;text-decoration:none;font-weight:700;font-size:13px;margin-bottom:10px;}
+
+/* ── FOOTER ── */
+footer{background:var(--mg);padding:30px 16px;text-align:center;position:relative;z-index:1;}
+.footer-logo{font-family:'Dancing Script',cursive;font-size:28px;color:#ffffff;margin-bottom:8px;}
+.footer-tagline{color:rgba(255,255,255,.75);font-size:13px;line-height:1.8;max-width:480px;margin:0 auto 10px;}
+.footer-copy{color:rgba(255,255,255,.4);font-size:11px;}
+
+/* ── FLOATING ── */
+.floats{position:fixed;bottom:24px;right:18px;z-index:1000;display:flex;flex-direction:column;align-items:flex-end;gap:10px;}
+.float-tanya{display:flex;align-items:center;gap:8px;background:var(--mg);color:#fff;
+  font-size:13px;font-weight:800;padding:10px 18px;border-radius:30px;
+  box-shadow:0 4px 16px rgba(201,168,76,.5);text-decoration:none;cursor:pointer;
+  animation:floatBounce 2.5s ease-in-out infinite;}
+@keyframes floatBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+.float-wa{width:60px;height:60px;border-radius:50%;
+  background:linear-gradient(135deg,#c62828,#8b1a1a);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 6px 22px rgba(198,40,40,.5);text-decoration:none;position:relative;}
+.float-wa svg{width:34px;height:34px;fill:#fff;}
+.float-ping{position:absolute;top:-2px;right:-2px;width:15px;height:15px;border-radius:50%;
+  background:#ff4444;border:2px solid #fff;animation:ping 1.6s infinite;}
+@keyframes ping{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.5);opacity:.6}}
+
+/* ── FADE IN ── */
+.fi{opacity:0;transform:translateY(24px);transition:opacity .55s ease,transform .55s ease;}
+.fi.vis{opacity:1;transform:translateY(0);}
+
+/* ── RESPONSIVE ── */
+@media(max-width:600px){
+  .paket-grid,.menu-grid{grid-template-columns:1fr;}
+  .galeri-grid{grid-template-columns:repeat(2,1fr);}
+  .g-cell.wide{grid-column:span 1;}
+  .g-cell.tall{grid-row:span 1;}
+  .why-grid{grid-template-columns:repeat(2,1fr);}
+}
+
+@media(max-width:600px){
+  #blog-grid{grid-template-columns:1fr!important;}
+}
+
+</style>
+</head>
+<body>
+<div class="page-layer">
+
+<!-- ════ HERO CAROUSEL ════ -->
+<section id="hero">
+<div class="hero-carousel" id="heroCarousel">
+  <div class="hero-track" id="heroTrack">
+    <div class="hero-slide"><img src="https://res.cloudinary.com/dinbrbetw/image/upload/v1777472135/Hero1_ysdpw2.png" alt="Hero 1" loading="eager"></div>
+    <div class="hero-slide"><img src="https://res.cloudinary.com/dinbrbetw/image/upload/v1777472134/Hero2_czzpxc.png" alt="Hero 2" loading="eager"></div>
+    <div class="hero-slide"><img src="https://res.cloudinary.com/dinbrbetw/image/upload/v1777472142/Hero3_djkesr.png" alt="Hero 3" loading="eager"></div>
+  </div>
+  <button class="hero-arrow prev" id="heroPrev" aria-label="prev">&#8592;</button>
+  <button class="hero-arrow next" id="heroNext" aria-label="next">&#8594;</button>
+  <div class="hero-dots" id="heroDots"></div>
+</div>
+</section>
+
+<!-- ════ INFO STRIP ════ -->
+<div style="background:#0d3d20;text-align:center;padding:10px 16px;font-family:Dancing Script,cursive;font-size:18px;color:#ffffff;letter-spacing:1px;">❤️ Sekali coba, semua pada suka ❤️</div>
+<div class="info-strip">
+  <div class="info-strip-inner">
+    <div class="info-chip"><span class="ic">📦</span> Minimal Order <strong>50 Pax</strong></div>
+    <div class="info-chip"><span class="ic">📅</span> Pemesanan <strong>H-1</strong></div>
+    <div class="info-chip"><span class="ic">🚚</span> Free Ongkir <strong>&ge;100 Pax</strong></div>
+    <div class="info-chip"><span class="ic">✅</span> <strong>Halal &amp; Higienis</strong></div>
+  </div>
+  <a href="https://wa.me/628979797669?text=Halo%20Snack%20Pada%20Suka%2C%20saya%20mau%20order" target="_blank" class="main-cta">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    ORDER SEKARANG : 08979797669
+  </a>
+</div>
+
+<!-- ════ SNACK KILAT BANNER ════ -->
+<div class="kilat-banner">
+  <a href="https://wa.me/628979797669?text=Halo%2C%20butuh%20snack%20kilat%20untuk%20acara%20segera!%20Bisa%20bantu?" target="_blank">
+    ⚡ Butuh Snack Kilat? Hubungi Kami Sekarang! ⚡ &rarr;
+  </a>
+</div>
+
+<!-- ════ PAKET SNACK BOX ════ -->
+<section class="section section-light" id="paket">
+<div class="container">
+  <div class="section-title fi">
+    <h2>🍱 Paket Snack Box</h2>
+    <p>3 pilihan harga untuk semua kebutuhan acara Anda</p>
+    <div class="underline"></div>
+  </div>
+  <div class="paket-grid">
+
+    <!-- 8K -->
+    <div class="prod-card fi">
+      <div class="card-header green">
+        <div class="price-tag"><small>Rp</small>8.000<small>/pax</small></div>
+        <div class="card-name">Snack 8K – Bubur Sumsum</div>
+      </div>
+      <div class="card-body">
+        <div class="img-slider" id="sl-8k">
+          <img src="https://res.cloudinary.com/dinbrbetw/image/upload/v1777472143/Bubursumsum_lejz03.png" class="active" alt="Bubur Sumsum 1">
+          <img src="https://res.cloudinary.com/dinbrbetw/image/upload/v1777473216/1777470376748_avmfuh.png" alt="Bubur Sumsum 2">
+          <button class="slider-prev" onclick="slideImg('8k',-1)">&#8592;</button>
+          <button class="slider-next" onclick="slideImg('8k',1)">&#8594;</button>
+          <div class="slider-count" id="sc-8k">1/2</div>
+        </div>
+        <div class="prod-detail">
+          <ul>
+            <li>Bubur sumsum lembut dengan kuah gula merah</li>
+            <li>Rasa autentik khas Nusantara</li>
+          </ul>
+          <span class="kemasan-tag">📦 Cup Minum 16oz + Sendok</span>
+        </div>
+        <div class="qty-row">
+          <button class="qty-btn" onclick="chQty('p8k',-10)">&#8722;</button>
+          <input class="qty-input" id="qi-p8k" type="number" value="50" min="50" onchange="updTotal('p8k')">
+          <button class="qty-btn" onclick="chQty('p8k',10)">+</button>
+        </div>
+        <div class="min-note">⚠️ Minimal 50 pax</div>
+        <div class="total-row">Total: <span id="tt-p8k">Rp 400.000</span></div>
+        <button class="order-btn" id="ob-p8k" onclick="doOrder('p8k')">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Order via WhatsApp
+        </button>
+      </div>
+    </div>
+
+    <!-- 10K -->
+    <div class="prod-card fi">
+      <div class="card-header green">
+        <div class="price-tag"><small>Rp</small>10.000<small>/pax</small></div>
+        <div class="card-name">Snack 10K – Pilih Paket</div>
+      </div>
+      <div class="card-body">
+        <select class="var-select" id="sel-10k" onchange="sel10k(this.value)">
+          <option value="">&#8212; Pilih Paket A / B / C / D &#8212;</option>
+          <option value="A">Paket A &#8211; Roti + Lumpia + Air Mineral</option>
+          <option value="B">Paket B &#8211; 3 Pcs Dimsum Aneka Variant</option>
+          <option value="C">Paket C &#8211; Roti + Lemper + Air Mineral</option>
+          <option value="D">Paket D &#8211; Roti + Buah Jeruk + Air Mineral</option>
+        </select>
+        <!-- variant panels -->
+        <div id="v10-none" class="img-slider" style="background:linear-gradient(135deg,#f0f7f3,#d8eed8);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;">
+          <div style="font-size:52px;">🎁</div><div style="font-size:13px;color:#5a7060;font-weight:700;">Pilih paket di atas</div>
+        </div>
+        <div id="v10-A" style="display:none;">
+          <div class="img-slider"><img src="https://res.cloudinary.com/dinbrbetw/image/upload/v1777472140/paketsnacka_c9hbhf.png" class="active" alt="Paket A"><div class="slider-count">Paket A</div></div>
+          <div class="prod-detail"><ul><li>Roti Manis</li><li>Lumpia Ayam Goreng</li><li>Air Mineral</li></ul><span class="kemasan-tag">📦 Box Karton Duplex + Tissue</span></div>
+        </div>
+        <div id="v10-B" style="display:none;">
+          <div class="img-slider"><img src="https://res.cloudinary.com/dinbrbetw/image/upload/v1777472135/paketsnackb_ahqqi4.png" class="active" alt="Paket B"><div class="slider-count">Paket B</div></div>
+          <div class="prod-detail"><ul><li>3 pcs Dimsum Aneka Variant</li><li>Pilihan isi ayam, udang, sayur</li></ul><span class="kemasan-tag">📦 Box Karton Duplex + Tissue</span></div>
+        </div>
+        <div id="v10-C" style="display:none;">
+          <div class="img-slider"><img src="https://res.cloudinary.com/dinbrbetw/image/upload/v1777472134/paketsnackc_esln8m.png" class="active" alt="Paket C"><div class="slider-count">Paket C</div></div>
+          <div class="prod-detail"><ul><li>Roti Manis</li><li>Lemper Ayam</li><li>Air Mineral</li></ul><span class="kemasan-tag">📦 Box Karton Duplex + Tissue</span></div>
+        </div>
+        <div id="v10-D" style="display:none;">
+          <div class="img-slider"><img src="https://res.cloudinary.com/dinbrbetw/image/upload/v1777472133/paketsnackD_nn6ldb.png" class="active" alt="Paket D"><div class="slider-count">Paket D</div></div>
+          <div class="prod-detail"><ul><li>Roti Manis</li><li>Buah Jeruk</li><li>Air Mineral</li></ul><span class="kemasan-tag">📦 Box Karton Duplex + Tissue</span></div>
+        </div>
+        <div class="qty-row">
+          <button class="qty-btn" onclick="chQty('p10k',-10)">&#8722;</button>
+          <input class="qty-input" id="qi-p10k" type="number" value="50" min="50" onchange="updTotal('p10k')">
+          <button class="qty-btn" onclick="chQty('p10k',10)">+</button>
+        </div>
+        <div class="min-note">⚠️ Minimal 50 pax</div>
+        <div class="total-row">Total: <span id="tt-p10k">Rp 500.000</span></div>
+        <button class="order-btn" id="ob-p10k" onclick="doOrder('p10k')" disabled>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Order via WhatsApp
+        </button>
+      </div>
+    </div>
+
+    <!-- 13K -->
+    <div class="prod-card fi">
+      <div class="card-header brown">
+        <div class="price-tag"><small>Rp</small>13.000<small>/pax</small></div>
+        <div class="card-name">Snack Box 13K – Komplit</div>
+      </div>
+      <div class="card-body">
+        <div class="img-slider">
+          <img src="https://res.cloudinary.com/dinbrbetw/image/upload/v1777472133/paketsnack13_vzrzgb.png" class="active" alt="Snack 13K">
+          <div class="slider-count">Snack Box 13K</div>
+        </div>
+        <div class="prod-detail">
+          <ul>
+            <li>Roti Manis</li>
+            <li>Lemper Ayam / Sosis Solo / Lumpia Ayam</li>
+            <li>Kue Talam Ubi</li>
+            <li>Air Mineral 600ml</li>
+            <li>Tissue</li>
+          </ul>
+          <span class="kemasan-tag">📦 Box Karton Duplex + Tissue</span>
+        </div>
+        <div class="qty-row">
+          <button class="qty-btn" onclick="chQty('p13k',-10)">&#8722;</button>
+          <input class="qty-input" id="qi-p13k" type="number" value="50" min="50" onchange="updTotal('p13k')">
+          <button class="qty-btn" onclick="chQty('p13k',10)">+</button>
+        </div>
+        <div class="min-note">⚠️ Minimal 50 pax</div>
+        <div class="total-row">Total: <span id="tt-p13k">Rp 650.000</span></div>
+        <button class="order-btn" id="ob-p13k" onclick="doOrder('p13k')">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Order via WhatsApp
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<!-- ════ SNACK BERAT ════ -->
+<section class="section section-alt" id="snack-berat">
+<div class="container">
+  <div class="section-title fi">
+    <h2>🍜 Snack Berat</h2>
+    <p>Menu mengenyangkan untuk tamu istimewa Anda</p>
+    <div class="underline"></div>
+  </div>
+  <div class="menu-grid">
+
+    <!-- BAKSO -->
+    <div class="prod-card fi">
+      <div class="card-header red">
+        <div class="price-tag"><small>Rp</small>20.000<small>/pax</small></div>
+        <div class="card-name">Bakso Lengkap</div>
+      </div>
+      <div class="card-body">
+        <div class="img-slider" id="sl-bakso">
+          <img src="https://res.cloudinary.com/dinbrbetw/image/upload/v1777473593/baksolengkap1_vvnxis.png" class="active" alt="Bakso 1">
+          <img src="https://res.cloudinary.com/dinbrbetw/image/upload/v1777472156/Baksolengkap2_kneto4.png" alt="Bakso 2">
+          <img src="https://res.cloudinary.com/dinbrbetw/image/upload/v1777472160/Baksolengkap3_qo5c5k.png" alt="Bakso 3">
+          <button class="slider-prev" onclick="slideImg('bakso',-1)">&#8592;</button>
+          <button class="slider-next" onclick="slideImg('bakso',1)">&#8594;</button>
+          <div class="slider-count" id="sc-bakso">1/3</div>
+        </div>
+        <div class="prod-detail">
+          <ul><li>1 bakso besar, 5 bakso kecil</li><li>Mie kuning &amp; mie putih</li><li>Kuah kaldu gurih</li><li>Sambal &amp; saos</li></ul>
+          <span class="kemasan-tag">📦 Bowl Kertas + Sendok</span>
+        </div>
+        <div class="qty-row">
+          <button class="qty-btn" onclick="chQty('bakso',-10)">&#8722;</button>
+          <input class="qty-input" id="qi-bakso" type="number" value="50" min="50" onchange="updTotal('bakso')">
+          <button class="qty-btn" onclick="chQty('bakso',10)">+</button>
+        </div>
+        <div class="min-note">⚠️ Minimal 50 pax</div>
+        <div class="total-row">Total: <span id="tt-bakso">Rp 1.000.000</span></div>
+        <button class="order-btn" id="ob-bakso" onclick="doOrder('bakso')">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Order via WhatsApp
+        </button>
+      </div>
+    </div>
+
+    <!-- MIE AYAM -->
+    <div class="prod-card fi">
+      <div class="card-header var(--mg)">
+        <div class="price-tag"><small>Rp</small><span id="mie-price-tag">25.000</span><small>/pax</small></div>
+        <div class="card-name">Mie Ayam Ceker</div>
+      </div>
+      <div class="card-body">
+        <div class="img-slider" id="sl-mie">
+          <img src="https://res.cloudinary.com/dinbrbetw/image/upload/v1777472153/Mieayamceker1_edmrlq.png" class="active" alt="Mie Ayam 1">
+          <img src="https://res.cloudinary.com/dinbrbetw/image/upload/v1777472153/Mieayamceker1_edmrlq.png" alt="Mie Ayam 2">
+          <img src="https://res.cloudinary.com/dinbrbetw/image/upload/v1777472156/Mieayamceker3_mzs056.png" alt="Mie Ayam 3">
+          <button class="slider-prev" onclick="slideImg('mie',-1)">&#8592;</button>
+          <button class="slider-next" onclick="slideImg('mie',1)">&#8594;</button>
+          <div class="slider-count" id="sc-mie">1/3</div>
+        </div>
+        <select class="var-select" id="sel-mie" onchange="selMie(this.value)">
+          <option value="25000">Mie Ayam Ceker &#8211; Rp 25.000</option>
+          <option value="28000">Mie Ayam Ceker + Bakso &#8211; Rp 28.000</option>
+          <option value="30000">Mie Ayam Ceker + Bakso + Pangsit &#8211; Rp 30.000</option>
+        </select>
+        <div class="prod-detail">
+          <ul><li>Mie ayam ceker empuk pilihan</li><li>Kuah kaldu gurih</li><li>Saos &amp; sambal</li></ul>
+          <span class="kemasan-tag">📦 Bowl Kertas + Sendok</span>
+        </div>
+        <div class="qty-row">
+          <button class="qty-btn" onclick="chQty('mie',-10)">&#8722;</button>
+          <input class="qty-input" id="qi-mie" type="number" value="50" min="50" onchange="updTotal('mie')">
+          <button class="qty-btn" onclick="chQty('mie',10)">+</button>
+        </div>
+        <div class="min-note">⚠️ Minimal 50 pax</div>
+        <div class="total-row">Total: <span id="tt-mie">Rp 1.250.000</span></div>
+        <button class="order-btn" id="ob-mie" onclick="doOrder('mie')">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Order via WhatsApp
+        </button>
+      </div>
+    </div>
+
+    <!-- SOTOMIE -->
+    <div class="prod-card fi">
+      <div class="card-header var(--mg)" style="background:linear-gradient(135deg,#1a6b3c,#2d8a5e);">
+        <div class="price-tag"><small>Rp</small>23.000<small>/pax</small></div>
+        <div class="card-name">Sotomie Bogor Daging</div>
+      </div>
+      <div class="card-body">
+        <div class="img-slider" id="sl-soto">
+          <img src="https://res.cloudinary.com/dinbrbetw/image/upload/v1777472151/Sotomiebogor1_mw4tkr.png" class="active" alt="Sotomie 1">
+          <img src="https://res.cloudinary.com/dinbrbetw/image/upload/v1777472152/Sotomiebogor2_g5tbfq.png" alt="Sotomie 2">
+          <button class="slider-prev" onclick="slideImg('soto',-1)">&#8592;</button>
+          <button class="slider-next" onclick="slideImg('soto',1)">&#8594;</button>
+          <div class="slider-count" id="sc-soto">1/2</div>
+        </div>
+        <div class="prod-detail">
+          <ul><li>Soto mie daging sapi pilihan</li><li>Kuah dipisah (tidak tumpah)</li><li>Mie, tauge, bihun</li><li>Saos &amp; sambal</li></ul>
+          <span class="kemasan-tag">📦 Bowl Kertas + Sendok</span>
+        </div>
+        <div class="qty-row">
+          <button class="qty-btn" onclick="chQty('soto',-10)">&#8722;</button>
+          <input class="qty-input" id="qi-soto" type="number" value="50" min="50" onchange="updTotal('soto')">
+          <button class="qty-btn" onclick="chQty('soto',10)">+</button>
+        </div>
+        <div class="min-note">⚠️ Minimal 50 pax</div>
+        <div class="total-row">Total: <span id="tt-soto">Rp 1.150.000</span></div>
+        <button class="order-btn" id="ob-soto" onclick="doOrder('soto')">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Order via WhatsApp
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<!-- ════ MINUMAN ════ -->
+<section class="section section-light" id="minuman">
+<div class="container">
+  <div class="section-title fi">
+    <h2>🧋 Minuman Segar</h2>
+    <p>Pilihan minuman premium untuk melengkapi acara Anda</p>
+    <div class="underline"></div>
+  </div>
+  <div class="menu-grid">
+
+    <!-- ES TEH JUMBO -->
+    <div class="prod-card fi">
+      <div class="card-header red">
+        <div class="price-tag"><small>Rp</small>7.000<small>/pax</small></div>
+        <div class="card-name">Es Teh Solo Jumbo</div>
+      </div>
+      <div class="card-body">
+        <div class="img-slider"><img src="https://res.cloudinary.com/dinbrbetw/image/upload/v1777472144/estehjumbo_glbd9r.png" class="active" alt="Es Teh Jumbo"></div>
+        <div class="prod-detail"><ul><li>Teh manis khas Solo yang segar</li><li>Es batu pilihan</li></ul><span class="kemasan-tag">🥤 Cup 22oz</span></div>
+        <div class="qty-row">
+          <button class="qty-btn" onclick="chQty('teh',-10)">&#8722;</button>
+          <input class="qty-input" id="qi-teh" type="number" value="50" min="50" onchange="updTotal('teh')">
+          <button class="qty-btn" onclick="chQty('teh',10)">+</button>
+        </div>
+        <div class="min-note">⚠️ Minimal 50 pax</div>
+        <div class="total-row">Total: <span id="tt-teh">Rp 350.000</span></div>
+        <button class="order-btn" onclick="doOrder('teh')"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Order via WhatsApp</button>
+      </div>
+    </div>
+
+    <!-- ES LEMON TEA -->
+    <div class="prod-card fi">
+      <div class="card-header" style="background:linear-gradient(135deg,#1a6b3c,#2d8a5e);">
+        <div class="price-tag"><small>Rp</small>8.000<small>/pax</small></div>
+        <div class="card-name">Es Lemon Tea</div>
+      </div>
+      <div class="card-body">
+        <div class="img-slider"><img src="https://res.cloudinary.com/dinbrbetw/image/upload/v1777472149/eslemontea_wifcvy.png" class="active" alt="Es Lemon Tea"></div>
+        <div class="prod-detail"><ul><li>Teh segar dengan perasan lemon asli</li><li>Manis-asam yang menyegarkan</li></ul><span class="kemasan-tag">🥤 Cup 22oz</span></div>
+        <div class="qty-row">
+          <button class="qty-btn" onclick="chQty('lemontea',-10)">&#8722;</button>
+          <input class="qty-input" id="qi-lemontea" type="number" value="50" min="50" onchange="updTotal('lemontea')">
+          <button class="qty-btn" onclick="chQty('lemontea',10)">+</button>
+        </div>
+        <div class="min-note">⚠️ Minimal 50 pax</div>
+        <div class="total-row">Total: <span id="tt-lemontea">Rp 400.000</span></div>
+        <button class="order-btn" onclick="doOrder('lemontea')"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Order via WhatsApp</button>
+      </div>
+    </div>
+
+    <!-- ES KELAPA -->
+    <div class="prod-card fi">
+      <div class="card-header" style="background:linear-gradient(135deg,#0d3d20,#1a6b3c);">
+        <div class="price-tag"><small>Rp</small>10.000<small>/pax</small></div>
+        <div class="card-name">Es Kelapa Besar ⭐ Favorit</div>
+      </div>
+      <div class="card-body">
+        <div class="img-slider"><img src="https://res.cloudinary.com/dinbrbetw/image/upload/v1777472147/eskelapa_aqfz3b.png" class="active" alt="Es Kelapa"></div>
+        <div class="prod-detail"><ul><li>Kelapa muda segar dengan air kelapa asli</li><li>Nata de coco</li></ul><span class="kemasan-tag">🥤 Cup 22oz</span></div>
+        <div class="qty-row">
+          <button class="qty-btn" onclick="chQty('kelapa',-10)">&#8722;</button>
+          <input class="qty-input" id="qi-kelapa" type="number" value="50" min="50" onchange="updTotal('kelapa')">
+          <button class="qty-btn" onclick="chQty('kelapa',10)">+</button>
+        </div>
+        <div class="min-note">⚠️ Minimal 50 pax</div>
+        <div class="total-row">Total: <span id="tt-kelapa">Rp 500.000</span></div>
+        <button class="order-btn" onclick="doOrder('kelapa')"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Order via WhatsApp</button>
+      </div>
+    </div>
+
+    <!-- ANEKA JUICE -->
+    <div class="prod-card fi">
+      <div class="card-header" style="background:linear-gradient(135deg,#2d8a5e,#3da06e);">
+        <div class="price-tag"><small>Rp</small>10.000<small>/pax</small></div>
+        <div class="card-name">Aneka Juice</div>
+      </div>
+      <div class="card-body">
+        <div class="img-slider"><img src="https://res.cloudinary.com/dinbrbetw/image/upload/v1777472143/anekajuice_mpzw4f.png" class="active" alt="Aneka Juice"></div>
+        <div class="prod-detail">
+          <p style="font-size:12px;color:#5a7060;font-weight:700;margin-bottom:6px;">Pilih Rasa:</p>
+          <div class="flavor-grid" id="fg-juice">
+            <span class="flavor-tag active" onclick="selFlavor('juice',this,'Mangga')">Mangga</span>
+            <span class="flavor-tag" onclick="selFlavor('juice',this,'Alpukat')">Alpukat</span>
+            <span class="flavor-tag" onclick="selFlavor('juice',this,'Buah Naga')">Buah Naga</span>
+            <span class="flavor-tag" onclick="selFlavor('juice',this,'Melon')">Melon</span>
+            <span class="flavor-tag" onclick="selFlavor('juice',this,'Jeruk')">Jeruk</span>
+          </div>
+          <span class="kemasan-tag">🥤 Cup 16oz</span>
+        </div>
+        <div class="qty-row">
+          <button class="qty-btn" onclick="chQty('juice',-10)">&#8722;</button>
+          <input class="qty-input" id="qi-juice" type="number" value="50" min="50" onchange="updTotal('juice')">
+          <button class="qty-btn" onclick="chQty('juice',10)">+</button>
+        </div>
+        <div class="min-note">⚠️ Minimal 50 pax</div>
+        <div class="total-row">Total: <span id="tt-juice">Rp 500.000</span></div>
+        <button class="order-btn" onclick="doOrder('juice')"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Order via WhatsApp</button>
+      </div>
+    </div>
+
+    <!-- ANEKA MINUMAN RASA -->
+    <div class="prod-card fi" style="grid-column:auto;">
+      <div class="card-header purple">
+        <div class="price-tag" id="minrasa-badge"><small>Rp</small>10.000<small>/pax</small></div>
+        <div class="card-name">Aneka Minuman Rasa</div>
+      </div>
+      <div class="card-body">
+        <div class="img-slider" style="background:linear-gradient(135deg,#0d3d20,#1a6b3c);display:flex;align-items:center;justify-content:center;">
+          <div style="font-size:72px;">🧋</div>
+        </div>
+        <div class="prod-detail">
+          <p style="font-size:12px;color:#5a7060;font-weight:700;margin-bottom:6px;">Pilih Rasa:</p>
+          <div class="flavor-grid" id="fg-minrasa">
+            <span class="flavor-tag active" onclick="selFlavor('minrasa',this,'Taro')">Taro</span>
+            <span class="flavor-tag" onclick="selFlavor('minrasa',this,'Vanilla')">Vanilla</span>
+            <span class="flavor-tag" onclick="selFlavor('minrasa',this,'Thai Tea')">Thai Tea</span>
+            <span class="flavor-tag" onclick="selFlavor('minrasa',this,'Green Tea')">Green Tea</span>
+            <span class="flavor-tag" onclick="selFlavor('minrasa',this,'Capuccino')">Capuccino</span>
+          </div>
+          <p style="font-size:12px;color:#5a7060;font-weight:700;margin:8px 0 6px;">Pilih Tipe:</p>
+          <div class="type-toggle">
+            <button class="type-btn active" id="tbOri" onclick="selType('original')">Original – Rp 10.000</button>
+            <button class="type-btn" id="tbExtra" onclick="selType('extra')">+ Cincau/Boba – Rp 12.000</button>
+          </div>
+          <span class="kemasan-tag">🥤 Cup 22oz</span>
+        </div>
+        <div class="qty-row">
+          <button class="qty-btn" onclick="chQty('minrasa',-10)">&#8722;</button>
+          <input class="qty-input" id="qi-minrasa" type="number" value="50" min="50" onchange="updTotal('minrasa')">
+          <button class="qty-btn" onclick="chQty('minrasa',10)">+</button>
+        </div>
+        <div class="min-note">⚠️ Minimal 50 pax</div>
+        <div class="total-row">Total: <span id="tt-minrasa">Rp 500.000</span></div>
+        <button class="order-btn" onclick="doOrder('minrasa')"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Order via WhatsApp</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<!-- ════ KONSULTASI CTA 1 ════ -->
+<div class="cta-strip fi">
+  <h3>💬 Konsultasi Kebutuhanmu</h3>
+  <p>Bingung pilih menu? Tim kami siap bantu carikan paket terbaik untuk acara Anda!</p>
+  <a href="https://wa.me/628979797669?text=Halo%2C%20saya%20mau%20konsultasi%20pilihan%20menu%20untuk%20acara%20saya" target="_blank" class="main-cta">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Konsultasi Sekarang!
+  </a>
+</div>
+
+<!-- ════ TESTIMONI ════ -->
+<section class="section section-alt" id="testimoni">
+<div class="container">
+  <div class="section-title fi">
+    <h2>💬 Kata Mereka</h2>
+    <p>Ratusan acara sukses, ribuan tamu puas</p>
+    <div class="underline"></div>
+  </div>
+  <div class="testi-grid fi">
+    <div class="testi-item"><div class="testi-avatar-row"><div class="testi-ava" style="background:#e0ede3;">👩</div><div class="testi-meta"><div class="name">Ibu Ratna Sari</div><div class="loc">📍 Cibinong, Bogor</div></div></div><div class="testi-stars">★★★★★</div><div class="testi-text">"Snack box-nya enak banget! Tamu undangan kami semua suka. Pengirimannya juga tepat waktu. Recommended banget!"</div></div>
+    <div class="testi-item"><div class="testi-avatar-row"><div class="testi-ava" style="background:#dff0e4;">👨</div><div class="testi-meta"><div class="name">Bapak Andi Wijaya</div><div class="loc">📍 Gunung Sindur, Bogor</div></div></div><div class="testi-stars">★★★★★</div><div class="testi-text">"Sudah 3x pesan untuk acara perusahaan kami. Kualitas konsisten, harga terjangkau, tim sangat responsif!"</div></div>
+    <div class="testi-item"><div class="testi-avatar-row"><div class="testi-ava" style="background:#e0ede3;">👩‍🦱</div><div class="testi-meta"><div class="name">Ibu Dewi Lestari</div><div class="loc">📍 Parung, Bogor</div></div></div><div class="testi-stars">★★★★★</div><div class="testi-text">"Mie ayam ceker-nya the best! Ceker empuk banget, kuah gurih. Semua tamu arisan kami nambah terus!"</div></div>
+    <div class="testi-item"><div class="testi-avatar-row"><div class="testi-ava" style="background:#d4eeda;">👩‍🦳</div><div class="testi-meta"><div class="name">Ustadzah Halimah</div><div class="loc">📍 Serpong, Tangerang Selatan</div></div></div><div class="testi-stars">★★★★★</div><div class="testi-text">"Pesan untuk pengajian 200 pax. Packaging rapi, food-safe, tiba 1 jam sebelum acara. Terima kasih!"</div></div>
+    <div class="testi-item"><div class="testi-avatar-row"><div class="testi-ava" style="background:#e8f4eb;">👨‍💼</div><div class="testi-meta"><div class="name">Bapak Hendra S.</div><div class="loc">📍 Sawangan, Depok</div></div></div><div class="testi-stars">★★★★★</div><div class="testi-text">"Paket 13K komplit banget! Roti, lemper, kue talam, air mineral, tissue – tamu ulang tahun putri kami sangat puas!"</div></div>
+    <div class="testi-item"><div class="testi-avatar-row"><div class="testi-ava" style="background:#e0ede3;">👩‍🎓</div><div class="testi-meta"><div class="name">Kak Siti Nurhaliza</div><div class="loc">📍 Bogor Barat</div></div></div><div class="testi-stars">★★★★★</div><div class="testi-text">"Snack box wisuda kami 150 pax semua on-time! Es kelapa segar-nya jadi favorit semua tamu. Mantap jiwa!"</div></div>
+    <div class="testi-item"><div class="testi-avatar-row"><div class="testi-ava" style="background:#d4eeda;">👩‍💼</div><div class="testi-meta"><div class="name">Ibu Yanti Pratiwi</div><div class="loc">📍 Bogor Timur</div></div></div><div class="testi-stars">★★★★★</div><div class="testi-text">"Bakso lengkapnya porsi besar, banyak, dan murah. Cocok banget buat acara kantor kami 300 orang!"</div></div>
+    <div class="testi-item"><div class="testi-avatar-row"><div class="testi-ava" style="background:#e8f4eb;">🧑‍🤝‍🧑</div><div class="testi-meta"><div class="name">Komunitas Ibu-Ibu RT 05</div><div class="loc">📍 Tanah Sareal, Bogor</div></div></div><div class="testi-stars">★★★★★</div><div class="testi-text">"Sudah langganan 2 tahun. Setiap arisan bulanan selalu pesan sini. Kualitasnya terjaga, harga bersahabat!"</div></div>
+    <div class="testi-item"><div class="testi-avatar-row"><div class="testi-ava" style="background:#dff0e4;">👨‍🍳</div><div class="testi-meta"><div class="name">Chef Budi Santoso</div><div class="loc">📍 Bekasi Utara</div></div></div><div class="testi-stars">★★★★★</div><div class="testi-text">"Sebagai orang kuliner, saya sangat apresiasi kualitas rasa dan kebersihan dapur mereka. Luar biasa!"</div></div>
+    <div class="testi-item"><div class="testi-avatar-row"><div class="testi-ava" style="background:#e0ede3;">👩‍🏫</div><div class="testi-meta"><div class="name">Ibu Mariam, S.Pd.</div><div class="loc">📍 Leuwiliang, Bogor</div></div></div><div class="testi-stars">★★★★★</div><div class="testi-text">"Pesan untuk acara perpisahan sekolah 500 siswa. Tim Snack Pada Suka profesional dan sangat membantu!"</div></div>
+  </div>
+  <div style="text-align:center;margin-top:30px;" class="fi">
+    <a href="https://wa.me/628979797669?text=Halo%2C%20saya%20mau%20order%20untuk%20acara%20saya" target="_blank" class="main-cta">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Bergabung Bersama Ribuan Pelanggan Kami!
+    </a>
+  </div>
+</div>
+</section>
+
+<!-- ════ CLIENT LOGOS ════ -->
+<section class="section section-light" id="clients" style="padding:40px 0 40px;">
+<div class="section-title fi" style="padding:0 16px;margin-bottom:24px;">
+  <h2>🤝 Dipercaya 100+ Client</h2>
+  <p>Perorangan, organisasi, perusahaan &amp; institusi</p>
+  <div class="underline"></div>
+</div>
+<div class="logo-carousel-wrap">
+  <div class="logo-track">
+    <div class="logo-pill" style="background:#0d3d20;color:#fff;">🏦<br>BCA</div>
+    <div class="logo-pill" style="background:#1a6b3c;color:#fff;">🏦<br>Mandiri</div>
+    <div class="logo-pill" style="background:#c62828;color:#fff;">🚂<br>KAI</div>
+    <div class="logo-pill" style="background:#c62828;color:#fff;">📡<br>Telkom</div>
+    <div class="logo-pill" style="background:#2d8a5e;color:#fff;">🏥<br>BPJS</div>
+    <div class="logo-pill" style="background:#1a6b3c;color:#fff;">🏥<br>RS Hermina</div>
+    <div class="logo-pill" style="background:#1a6b3c;color:#fff;">🏥<br>RS Eka BSD</div>
+    <div class="logo-pill" style="background:#0d3d20;color:#fff;">🏥<br>RS As-Syifa</div>
+    <div class="logo-pill" style="background:#2d8a5e;color:#fff;">🏥<br>RS Dhuafa</div>
+    <div class="logo-pill" style="background:#c62828;color:#fff;">⚡<br>Gerindra</div>
+    <div class="logo-pill" style="background:#c62828;color:#fff;">🐃<br>PDI-P</div>
+    <div class="logo-pill" style="background:#1a6b3c;color:#fff;">🌙<br>PKS</div>
+    <div class="logo-pill" style="background:#2d8a5e;color:#fff;">🎓<br>UI</div>
+    <div class="logo-pill" style="background:#0d3d20;color:#fff;">🎓<br>IPB</div>
+    <div class="logo-pill" style="background:#1a6b3c;color:#fff;">🎓<br>Univ. Pakuan</div>
+    <div class="logo-pill" style="background:#2d8a5e;color:#fff;">🎓<br>Gunadarma</div>
+    <div class="logo-pill" style="background:#0d3d20;color:#fff;">🎓<br>UNPAM</div>
+    <div class="logo-pill" style="background:#1a6b3c;color:#fff;">🏫<br>SMAN 1 Bogor</div>
+    <div class="logo-pill" style="background:#0d3d20;color:#fff;">🏢<br>Pemkab Bogor</div>
+    <div class="logo-pill" style="background:#2d8a5e;color:#fff;">🏢<br>PT. Maju Jaya</div>
+    <!-- duplicate for seamless loop -->
+    <div class="logo-pill" style="background:#0d3d20;color:#fff;">🏦<br>BCA</div>
+    <div class="logo-pill" style="background:#1a6b3c;color:#fff;">🏦<br>Mandiri</div>
+    <div class="logo-pill" style="background:#c62828;color:#fff;">🚂<br>KAI</div>
+    <div class="logo-pill" style="background:#c62828;color:#fff;">📡<br>Telkom</div>
+    <div class="logo-pill" style="background:#2d8a5e;color:#fff;">🏥<br>BPJS</div>
+    <div class="logo-pill" style="background:#1a6b3c;color:#fff;">🏥<br>RS Hermina</div>
+    <div class="logo-pill" style="background:#1a6b3c;color:#fff;">🏥<br>RS Eka BSD</div>
+    <div class="logo-pill" style="background:#0d3d20;color:#fff;">🏥<br>RS As-Syifa</div>
+    <div class="logo-pill" style="background:#2d8a5e;color:#fff;">🏥<br>RS Dhuafa</div>
+    <div class="logo-pill" style="background:#c62828;color:#fff;">⚡<br>Gerindra</div>
+    <div class="logo-pill" style="background:#c62828;color:#fff;">🐃<br>PDI-P</div>
+    <div class="logo-pill" style="background:#1a6b3c;color:#fff;">🌙<br>PKS</div>
+    <div class="logo-pill" style="background:#2d8a5e;color:#fff;">🎓<br>UI</div>
+    <div class="logo-pill" style="background:#0d3d20;color:#fff;">🎓<br>IPB</div>
+    <div class="logo-pill" style="background:#1a6b3c;color:#fff;">🎓<br>Univ. Pakuan</div>
+    <div class="logo-pill" style="background:#2d8a5e;color:#fff;">🎓<br>Gunadarma</div>
+    <div class="logo-pill" style="background:#0d3d20;color:#fff;">🎓<br>UNPAM</div>
+    <div class="logo-pill" style="background:#1a6b3c;color:#fff;">🏫<br>SMAN 1 Bogor</div>
+    <div class="logo-pill" style="background:#0d3d20;color:#fff;">🏢<br>Pemkab Bogor</div>
+    <div class="logo-pill" style="background:#2d8a5e;color:#fff;">🏢<br>PT. Maju Jaya</div>
+  </div>
+</div>
+</section>
+
+<!-- ════ KENAPA KAMI ════ -->
+<section class="section-dark" id="why">
+<div class="container">
+  <div class="section-title light fi">
+    <h2>🌟 Kenapa Pilih Kami?</h2>
+    <p>Kami bukan sekadar catering biasa</p>
+    <div class="underline"></div>
+  </div>
+  <div class="why-grid fi">
+    <div class="why-card"><div class="ic">✅</div><h4>Halal &amp; Higienis</h4><p>Bersertifikat halal, dapur bersih dan standar food safety terjaga setiap hari</p></div>
+    <div class="why-card"><div class="ic">⚡</div><h4>Tepat Waktu</h4><p>Komitmen pengiriman on-time. Keterlambatan adalah tanggung jawab kami</p></div>
+    <div class="why-card"><div class="ic">💰</div><h4>Harga Terjangkau</h4><p>Mulai Rp 8.000/pax tanpa mengorbankan kualitas rasa dan porsi</p></div>
+    <div class="why-card"><div class="ic">🍽️</div><h4>Menu Variatif</h4><p>10+ pilihan menu dari snack ringan, berat, hingga aneka minuman segar</p></div>
+    <div class="why-card"><div class="ic">👩‍🍳</div><h4>Tim Berpengalaman</h4><p>10+ tahun melayani acara dari skala 50 hingga 5.000+ pax</p></div>
+    <div class="why-card"><div class="ic">📦</div><h4>Packaging Premium</h4><p>Box karton duplex food-grade, aman, rapi, dan berkesan untuk tamu Anda</p></div>
+  </div>
+</div>
+</section>
+
+<!-- ════ FAQ ════ -->
+<section class="section section-light" id="faq">
+<div class="container">
+  <div class="section-title fi">
+    <h2>❓ FAQ</h2>
+    <p>Pertanyaan yang sering ditanyakan</p>
+    <div class="underline"></div>
+  </div>
+  <div class="faq-list fi">
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Berapa minimal order? <span class="arrow">&#9660;</span></div><div class="faq-a"><div class="faq-a-inner">Minimal order adalah <strong>50 pax per item</strong>. Untuk gabungan menu berbeda, masing-masing tetap minimal 50 pax.</div></div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Kapan batas waktu pemesanan? <span class="arrow">&#9660;</span></div><div class="faq-a"><div class="faq-a-inner">Pemesanan harus masuk <strong>H-1 (1 hari sebelum)</strong> sebelum jam 20.00 WIB untuk persiapan maksimal.</div></div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Apakah ada free ongkir? <span class="arrow">&#9660;</span></div><div class="faq-a"><div class="faq-a-inner">Ya! <strong>Free pengantaran</strong> untuk total order di atas <strong>100 pax</strong>. Di bawah 100 pax, ongkir menyesuaikan jarak lokasi acara.</div></div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Metode pembayaran apa yang tersedia? <span class="arrow">&#9660;</span></div><div class="faq-a"><div class="faq-a-inner">Transfer bank (BCA, Mandiri, BRI), e-wallet (OVO, GoPay, Dana, ShopeePay). Konfirmasi pembayaran via WhatsApp.</div></div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Apakah bisa custom menu atau porsi? <span class="arrow">&#9660;</span></div><div class="faq-a"><div class="faq-a-inner">Tentu! Hubungi kami via WhatsApp untuk konsultasi custom menu, variasi rasa, atau kebutuhan khusus (misal: tanpa MSG, vegetarian).</div></div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Berapa lama makanan tahan setelah dikirim? <span class="arrow">&#9660;</span></div><div class="faq-a"><div class="faq-a-inner">Snack box bertahan <strong>3-4 jam</strong> pada suhu ruang. Kami selalu kirim mendekati waktu acara untuk menjaga kesegaran.</div></div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Apakah melayani pengiriman luar Bogor? <span class="arrow">&#9660;</span></div><div class="faq-a"><div class="faq-a-inner">Kami melayani seluruh wilayah <strong>Jabodetabek</strong> (Jakarta, Bogor, Depok, Tangerang, Bekasi). Hubungi kami untuk estimasi ongkir.</div></div></div>
+  </div>
+</div>
+</section>
+
+<!-- ════ GALERI ════ -->
+<section class="section section-alt" id="galeri">
+<div class="container">
+  <div class="section-title fi">
+    <h2>📸 Galeri</h2>
+    <p>Momen spesial bersama klien kami</p>
+    <div class="underline"></div>
+  </div>
+  <div class="galeri-grid fi">
+    <div class="g-cell wide" style="background:linear-gradient(135deg,#0d3d20,#1a6b3c);"><span style="font-size:72px;">🍱</span><div class="g-overlay"><span>Snack Box Lengkap</span></div></div>
+    <div class="g-cell" style="background:linear-gradient(135deg,#c62828,#8b1a1a);"><span style="font-size:48px;">🍢</span><div class="g-overlay"><span>Bakso Lengkap</span></div></div>
+    <div class="g-cell" style="background:linear-gradient(135deg,#0d3d20,#2d8a5e);"><span style="font-size:48px;">🥟</span><div class="g-overlay"><span>Dimsum Aneka Rasa</span></div></div>
+    <div class="g-cell" style="background:linear-gradient(135deg,#2d8a5e,#3da06e);"><span style="font-size:48px;">🚚</span><div class="g-overlay"><span>Pengiriman Tepat Waktu</span></div></div>
+    <div class="g-cell" style="background:linear-gradient(135deg,#0d3d20,#1a6b3c);"><span style="font-size:48px;">🎉</span><div class="g-overlay"><span>Acara Perusahaan</span></div></div>
+    <div class="g-cell" style="background:linear-gradient(135deg,#006064,#00838f);"><span style="font-size:48px;">🥥</span><div class="g-overlay"><span>Es Kelapa Favorit</span></div></div>
+    <div class="g-cell" style="background:linear-gradient(135deg,#0d3d20,#2d8a5e);"><span style="font-size:48px;">☕</span><div class="g-overlay"><span>Minuman Segar</span></div></div>
+    <div class="g-cell" style="background:linear-gradient(135deg,#1a6b3c,#4a7a5a);"><span style="font-size:48px;">🍚</span><div class="g-overlay"><span>Bubur Sumsum Khas</span></div></div>
+    <div class="g-cell" style="background:linear-gradient(135deg,#0d3d20,#1a6b3c);"><span style="font-size:48px;">🍝</span><div class="g-overlay"><span>Mie Ayam Ceker</span></div></div>
+  </div>
+</div>
+</section>
+
+<!-- ════ CLOSING CTA ════ -->
+<div class="cta-strip" style="background:linear-gradient(135deg,#0d3d20,#1a6b3c);">
+  <h3 style="font-size:clamp(20px,4vw,32px);">🌿 Konsultasikan Kebutuhanmu</h3>
+  <p style="max-width:560px;margin:0 auto 24px;">Acara kecil maupun besar, kami siap hadir dengan cita rasa terbaik dan layanan yang tulus. Hubungi kami sekarang!</p>
+  <a href="https://wa.me/628979797669?text=Halo%20Snack%20Pada%20Suka%2C%20saya%20mau%20konsultasi%20untuk%20acara%20saya" target="_blank" class="main-cta">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Hubungi Kami Sekarang!
+  </a>
+</div>
+
+
+<!-- ════ BLOG / ARTIKEL ════ -->
+<section class="section section-light" id="blog" style="background:rgba(242,249,244,.97);">
+<div class="container">
+  <div class="section-title fi">
+    <h2>📝 Artikel &amp; Tips Catering</h2>
+    <p>Inspirasi, panduan, dan tips memilih catering terbaik untuk acara Anda</p>
+    <div class="underline"></div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-bottom:28px;" id="blog-grid">
+
+    <!-- Card 1 -->
+    <article style="background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 6px 24px rgba(26,74,46,.14);transition:transform .25s,box-shadow .25s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+      <a href="catering-snack-box-murah-acara-kantor-bogor.html">
+        <div style="height:160px;background:linear-gradient(135deg,#0d3d20,#1a6b3c);display:flex;align-items:center;justify-content:center;font-size:52px;position:relative;">
+          🍱
+          <span style="position:absolute;top:10px;left:10px;background:#2d8a5e;color:#fff;font-size:11px;font-weight:800;padding:3px 10px;border-radius:16px;">Tips Catering</span>
+        </div>
+      </a>
+      <div style="padding:16px 18px 20px;">
+        <div style="font-size:11px;color:#8aaa96;margin-bottom:6px;">📅 18 Mei 2025</div>
+        <a href="catering-snack-box-murah-acara-kantor-bogor.html"><div style="font-family:'Playfair Display',serif;font-size:15px;color:#0d3d20;font-weight:700;line-height:1.4;margin-bottom:8px;">Catering Snack Box Murah untuk Acara Kantor di Bogor, Mulai Rp8.000/Pax</div></a>
+        <div style="font-size:13px;color:#5a7060;line-height:1.7;margin-bottom:12px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;">Mengadakan acara kantor dengan anggaran terbatas bukan berarti harus mengorbankan kualitas konsumsi. Temukan solusi catering snack box murah di Bogor yang enak, halal, dan tepat waktu.</div>
+        <a href="catering-snack-box-murah-acara-kantor-bogor.html" style="font-size:13px;font-weight:800;color:var(--mg);display:inline-flex;align-items:center;gap:4px;">Baca Selengkapnya →</a>
+      </div>
+    </article>
+
+    <!-- Card 2 -->
+    <article style="background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 6px 24px rgba(26,74,46,.14);transition:transform .25s,box-shadow .25s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+      <a href="paket-snack-box-arisan-pengajian-murah-enak-kenyang.html">
+        <div style="height:160px;background:linear-gradient(135deg,#0d3d20,#1a6b3c);display:flex;align-items:center;justify-content:center;font-size:52px;position:relative;">
+          🤲
+          <span style="position:absolute;top:10px;left:10px;background:#2d8a5e;color:#fff;font-size:11px;font-weight:800;padding:3px 10px;border-radius:16px;">Ide Acara</span>
+        </div>
+      </a>
+      <div style="padding:16px 18px 20px;">
+        <div style="font-size:11px;color:#8aaa96;margin-bottom:6px;">📅 15 Mei 2025</div>
+        <a href="paket-snack-box-arisan-pengajian-murah-enak-kenyang.html"><div style="font-family:'Playfair Display',serif;font-size:15px;color:#0d3d20;font-weight:700;line-height:1.4;margin-bottom:8px;">Paket Snack Box untuk Arisan &amp; Pengajian: Murah, Enak, dan Bikin Tamu Kenyang</div></a>
+        <div style="font-size:13px;color:#5a7060;line-height:1.7;margin-bottom:12px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;">Arisan dan pengajian adalah momen kebersamaan yang hangat. Konsumsi yang lezat dan tersedia tepat waktu akan membuat acara semakin berkesan. Panduan lengkap memilih menu yang pas.</div>
+        <a href="paket-snack-box-arisan-pengajian-murah-enak-kenyang.html" style="font-size:13px;font-weight:800;color:var(--mg);display:inline-flex;align-items:center;gap:4px;">Baca Selengkapnya →</a>
+      </div>
+    </article>
+
+    <!-- Card 3 -->
+    <article style="background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 6px 24px rgba(26,74,46,.14);transition:transform .25s,box-shadow .25s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+      <a href="tips-memilih-catering-snack-box-halal-terpercaya-jabodetabek.html">
+        <div style="height:160px;background:linear-gradient(135deg,#2d8a5e,#3da06e);display:flex;align-items:center;justify-content:center;font-size:52px;position:relative;">
+          ✅
+          <span style="position:absolute;top:10px;left:10px;background:#2d8a5e;color:#fff;font-size:11px;font-weight:800;padding:3px 10px;border-radius:16px;">Panduan</span>
+        </div>
+      </a>
+      <div style="padding:16px 18px 20px;">
+        <div style="font-size:11px;color:#8aaa96;margin-bottom:6px;">📅 10 Mei 2025</div>
+        <a href="tips-memilih-catering-snack-box-halal-terpercaya-jabodetabek.html"><div style="font-family:'Playfair Display',serif;font-size:15px;color:#0d3d20;font-weight:700;line-height:1.4;margin-bottom:8px;">7 Tips Memilih Catering Snack Box Halal dan Terpercaya di Jabodetabek</div></a>
+        <div style="font-size:13px;color:#5a7060;line-height:1.7;margin-bottom:12px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;">Salah pilih vendor catering bisa jadi bencana untuk acara Anda. Pelajari 7 tips penting ini sebelum memesan agar hasilnya memuaskan semua tamu undangan Anda.</div>
+        <a href="tips-memilih-catering-snack-box-halal-terpercaya-jabodetabek.html" style="font-size:13px;font-weight:800;color:var(--mg);display:inline-flex;align-items:center;gap:4px;">Baca Selengkapnya →</a>
+      </div>
+    </article>
+
+    <!-- Card 4 – Coming Soon / CTA -->
+    <article style="background:linear-gradient(135deg,#0d3d20,#1a6b3c);border-radius:18px;overflow:hidden;box-shadow:0 6px 24px rgba(26,74,46,.2);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px 22px;text-align:center;min-height:260px;">
+      <div style="font-size:48px;margin-bottom:14px;">✍️</div>
+      <div style="font-family:'Playfair Display',serif;font-size:16px;color:#fff;font-weight:700;margin-bottom:8px;">Artikel Baru Segera Hadir!</div>
+      <div style="font-size:13px;color:rgba(255,255,255,.75);margin-bottom:18px;line-height:1.7;">Kami terus menulis tips & inspirasi catering terbaik untuk Anda</div>
+      <a href="blog.html" style="display:inline-flex;align-items:center;gap:6px;background:var(--mg);color:#fff;font-size:13px;font-weight:800;padding:9px 20px;border-radius:24px;text-decoration:none;">📝 Lihat Semua Artikel</a>
+    </article>
+
+  </div>
+  <div style="text-align:center;" class="fi">
+    <a href="blog.html" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#c62828,#8b1a1a);color:#fff;font-size:14px;font-weight:800;padding:13px 30px;border-radius:50px;text-decoration:none;box-shadow:0 4px 16px rgba(198,40,40,.3);">
+      📝 Lihat Semua Artikel Blog →
+    </a>
+  </div>
+</div>
+</section>
+
+<!-- ════ LOKASI ════ -->
+<section class="section section-light" id="lokasi">
+<div class="container">
+  <div class="section-title fi">
+    <h2>📍 Lokasi Kami</h2>
+    <p>Gunung Sindur, Kab. Bogor – Melayani seluruh Jabodetabek</p>
+    <div class="underline"></div>
+  </div>
+  <div class="lokasi-wrap fi">
+    <div class="map-frame">
+      <iframe src="https://maps.google.com/maps?q=Padurenan+Gunung+Sindur+Bogor+Indonesia&t=&z=15&ie=UTF8&iwloc=&output=embed" allowfullscreen loading="lazy" title="Lokasi Snack Pada Suka"></iframe>
+    </div>
+    <div class="lokasi-info">
+      <h3 style="font-family:'Dancing Script',cursive;font-size:26px;"><span style="color:#fff;">Snack</span> <span style="color:#1a6b3c;">Pada</span> <span style="color:#2d8a5e;">Suka</span></h3>
+      <div class="addr-box">📍 Perumahan Taman Sari Bukit Damai<br>Blok A4/No. 34, Padurenan<br>Gunung Sindur, Kab. Bogor 16340<br>Jawa Barat, Indonesia</div>
+      <p style="font-size:13px;color:#4a6052;margin-bottom:14px;">Buka 07.00–20.00 WIB &#8226; Pemesanan WA 24 jam</p>
+      <a class="btn-maps" href="https://maps.google.com/maps?q=Padurenan+Gunung+Sindur+Bogor" target="_blank">🗺️ Buka Google Maps</a><br>
+      <a href="https://wa.me/628979797669?text=Halo%20Snack%20Pada%20Suka%2C%20saya%20mau%20konsultasi" target="_blank" class="main-cta" style="font-size:13px;padding:12px 24px;margin-top:10px;display:inline-flex;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Hubungi Kami!
+      </a>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ════ FOOTER ════ -->
+<footer>
+  <div class="footer-logo"><span style="color:#ffffff;">Snack</span> <span style="color:#c2dcc8;">Pada</span> <span style="color:var(--xg);">Suka</span></div>
+  <div class="footer-tagline">
+    "Insya Allah Halal, Bersih, Kualitas Terjamin &amp; Barokah"<br>
+    Paket Snack &amp; Catering Acara &#8226; Jabodetabek &#8226; Sejak 2023
+  </div>
+  <div style="margin:12px 0;">
+    <a href="https://www.snackpadasuka.sbs" target="_blank" style="color:#ffffff;font-weight:700;text-decoration:none;">🌐 snackpadasuka.sbs</a> &nbsp;|  <a href="https://wa.me/628979797669" target="_blank" style="color:#ffffff;font-weight:700;text-decoration:none;">📱 WA: 08979797669</a>
+    &nbsp;|&nbsp;
+    <span style="color:rgba(255,255,255,.55);">📍 Gunung Sindur, Kab. Bogor</span>
+  </div>
+  <div class="footer-copy">&#169; 2023 Snack Pada Suka. All rights reserved.</div>
+</footer>
+
+<!-- ════ FLOATING BUTTONS ════ -->
+<div class="floats">
+  <a href="https://wa.me/628979797669?text=Halo%20kak%2C%20mau%20tanya2%20dulu%20tentang%20menu%20dan%20paket" target="_blank" class="float-tanya">
+    💬 Mau tanya2..
+  </a>
+  <a href="https://wa.me/628979797669?text=Halo%20Snack%20Pada%20Suka%2C%20saya%20mau%20order" target="_blank" class="float-wa">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <div class="float-ping"></div>
+  </a>
+</div>
+
+<script>
+// ══════ HERO CAROUSEL ══════
+(function(){
+  const track=document.getElementById('heroTrack');
+  const dotsEl=document.getElementById('heroDots');
+  const slides=track.querySelectorAll('.hero-slide');
+  let cur=0,dragging=false,startX=0,dragDelta=0,autoTimer;
+  const total=slides.length;
+  slides.forEach((_,i)=>{const d=document.createElement('button');d.className='hero-dot'+(i===0?' active':'');d.onclick=()=>goTo(i);dotsEl.appendChild(d);});
+  function goTo(n){cur=(n+total)%total;track.style.transform='translateX(-'+cur+'00%)';dotsEl.querySelectorAll('.hero-dot').forEach((d,i)=>d.className='hero-dot'+(i===cur?' active':''));}
+  document.getElementById('heroPrev').onclick=()=>goTo(cur-1);
+  document.getElementById('heroNext').onclick=()=>goTo(cur+1);
+  function startAuto(){autoTimer=setInterval(()=>goTo(cur+1),4000);}
+  function stopAuto(){clearInterval(autoTimer);}
+  // touch/mouse
+  track.addEventListener('mousedown',e=>{dragging=true;startX=e.clientX;stopAuto();});
+  track.addEventListener('touchstart',e=>{startX=e.touches[0].clientX;stopAuto();},{passive:true});
+  track.addEventListener('mouseup',e=>{if(!dragging)return;dragDelta=e.clientX-startX;if(Math.abs(dragDelta)>50)goTo(dragDelta<0?cur+1:cur-1);dragging=false;startAuto();});
+  track.addEventListener('touchend',e=>{dragDelta=e.changedTouches[0].clientX-startX;if(Math.abs(dragDelta)>50)goTo(dragDelta<0?cur+1:cur-1);startAuto();});
+  track.addEventListener('mouseleave',()=>{dragging=false;});
+  startAuto();
+})();
+
+// ══════ IMG SLIDERS ══════
+const sliderState={};
+function slideImg(id,dir){
+  const wrap=document.getElementById('sl-'+id);
+  if(!wrap)return;
+  const imgs=wrap.querySelectorAll('img');
+  if(!imgs.length)return;
+  if(!sliderState[id])sliderState[id]=0;
+  imgs[sliderState[id]].classList.remove('active');
+  sliderState[id]=(sliderState[id]+dir+imgs.length)%imgs.length;
+  imgs[sliderState[id]].classList.add('active');
+  const cnt=document.getElementById('sc-'+id);
+  if(cnt)cnt.textContent=(sliderState[id]+1)+'/'+imgs.length;
+}
+
+// ══════ PRODUCTS DATA ══════
+const PD={
+  p8k:   {name:'Bubur Sumsum',price:8000},
+  p10k:  {name:'Snack Box 10K',price:10000},
+  p13k:  {name:'Snack Box 13K Komplit',price:13000},
+  bakso: {name:'Bakso Lengkap',price:20000},
+  mie:   {name:'Mie Ayam Ceker',price:25000},
+  soto:  {name:'Sotomie Bogor Daging',price:23000},
+  teh:   {name:'Es Teh Solo Jumbo',price:7000},
+  lemontea:{name:'Es Lemon Tea',price:8000},
+  kelapa:{name:'Es Kelapa Besar',price:10000},
+  juice: {name:'Aneka Juice',price:10000},
+  minrasa:{name:'Aneka Minuman Rasa',price:10000},
+};
+const state10k={variant:''};
+const stateMie={price:25000,name:'Mie Ayam Ceker'};
+const stateJuice={flavor:'Mangga'};
+const stateMinrasa={flavor:'Taro',type:'original',price:10000};
+
+function fmt(n){return new Intl.NumberFormat('id-ID',{style:'currency',currency:'IDR',maximumFractionDigits:0}).format(n);}
+
+function chQty(id,delta){
+  const inp=document.getElementById('qi-'+id);
+  if(!inp)return;
+  let v=parseInt(inp.value)||50;
+  v=Math.max(50,v+delta);
+  inp.value=v;
+  updTotal(id);
+}
+
+function updTotal(id){
+  const inp=document.getElementById('qi-'+id);
+  if(!inp)return;
+  let qty=parseInt(inp.value)||50;
+  if(qty<50){qty=50;inp.value=50;}
+  let price=0;
+  if(id==='mie') price=stateMie.price;
+  else if(id==='minrasa') price=stateMinrasa.price;
+  else price=(PD[id]||{}).price||0;
+  const el=document.getElementById('tt-'+id);
+  if(el)el.textContent=fmt(qty*price);
+}
+
+function doOrder(id){
+  const inp=document.getElementById('qi-'+id);
+  if(!inp)return;
+  const qty=parseInt(inp.value)||50;
+  let price=0,name='';
+  if(id==='p10k'){
+    if(!state10k.variant){alert('Silakan pilih paket terlebih dahulu!');return;}
+    name='Snack Box 10K Paket '+state10k.variant;price=10000;
+  } else if(id==='mie'){
+    name=stateMie.name;price=stateMie.price;
+  } else if(id==='juice'){
+    name='Aneka Juice rasa '+stateJuice.flavor;price=10000;
+  } else if(id==='minrasa'){
+    const tipe=stateMinrasa.type==='extra'?'+Cincau/Boba':'Original';
+    name='Aneka Minuman Rasa '+stateMinrasa.flavor+' ('+tipe+')';price=stateMinrasa.price;
+  } else {
+    name=(PD[id]||{}).name||id;price=(PD[id]||{}).price||0;
+  }
+  const total=fmt(qty*price);
+  const msg='Halo Snack Pada Suka, saya mau order *'+name+'* qty *'+qty+' pax*, total *'+total+'*. Pembayaran kemana?';
+  window.open('https://wa.me/628979797669?text='+encodeURIComponent(msg),'_blank');
+}
+
+// 10K variant
+let cur10kVariant='';
+function sel10k(val){
+  cur10kVariant=val;
+  state10k.variant=val;
+  ['none','A','B','C','D'].forEach(v=>{ const el=document.getElementById('v10-'+v); if(el)el.style.display='none'; });
+  document.getElementById(val?'v10-'+val:'v10-none').style.display='block';
+  document.getElementById('ob-p10k').disabled=!val;
+  updTotal('p10k');
+}
+
+// Mie price
+function selMie(val){
+  const map={'25000':'Mie Ayam Ceker','28000':'Mie Ayam Ceker + Bakso','30000':'Mie Ayam Ceker + Bakso + Pangsit'};
+  stateMie.price=parseInt(val);stateMie.name=map[val]||'Mie Ayam Ceker';
+  const tag=document.getElementById('mie-price-tag');
+  if(tag)tag.textContent=parseInt(val).toLocaleString('id-ID');
+  updTotal('mie');
+}
+
+// Flavor selector
+function selFlavor(product,el,flavor){
+  const grid=document.getElementById('fg-'+product);
+  if(grid)grid.querySelectorAll('.flavor-tag').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  if(product==='juice')stateJuice.flavor=flavor;
+  if(product==='minrasa')stateMinrasa.flavor=flavor;
+}
+
+// Minuman rasa type
+function selType(type){
+  stateMinrasa.type=type;
+  stateMinrasa.price=type==='extra'?12000:10000;
+  document.getElementById('tbOri').className='type-btn'+(type==='original'?' active':'');
+  document.getElementById('tbExtra').className='type-btn'+(type==='extra'?' active':'');
+  const badge=document.getElementById('minrasa-badge');
+  if(badge)badge.innerHTML='<small>Rp</small>'+(type==='extra'?'12.000':'10.000')+'<small>/pax</small>';
+  updTotal('minrasa');
+}
+
+// FAQ accordion
+function toggleFaq(q){
+  const a=q.nextElementSibling;
+  const isOpen=a.classList.contains('open');
+  document.querySelectorAll('.faq-a.open').forEach(el=>{el.classList.remove('open');el.previousElementSibling.classList.remove('open');});
+  if(!isOpen){a.classList.add('open');q.classList.add('open');}
+}
+
+// Scroll fade-in
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis');});},{threshold:0.08});
+document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
+
+// Init totals
+['p8k','p13k','bakso','mie','soto','teh','lemontea','kelapa','juice','minrasa'].forEach(id=>updTotal(id));
+updTotal('p10k');
+</script>
+</div>
+</body>
+</html>
